@@ -80,35 +80,25 @@ FROM Booking;
 */
 
 /* ------------------------------------------------ Task 3
-*/
-/*
+
 INSERT INTO TOUR (TourName, Description) VALUES
 ('North', 'Tour of wineries and outlets of the Bedigo and Castlemaine region'),
 ('South', 'Tour of wineries and outlets of Mornington Penisulan'),
 ('West', 'Tour of wineries and outlets of the Geelong and Otways region');
-*/
 
-
-/*
 INSERT INTO CLIENT (ClientId, SurName, GivenName, Gender) VALUES
 (1, 'Price', 'Taylor', 'M'),
 (2, 'Gamble', 'Ellyse', 'F'),
 (3, 'Tan', 'Tilly', 'F'),
 (102983679, 'Hudson', 'Dominic', 'M');
-*/
 
-
-/*
 INSERT INTO EVENT (TourName, EventMonth, EventDay, EventYear, EventFee) VALUES
 ('North', 'Jan', 9, 2019, 200),
 ('North', 'Feb', 13, 2016, 225),
 ('South', 'Jan', 9, 2016, 200),
 ('South', 'Jan', 16, 2016, 200),
 ('West', 'Jan', 29, 2016, 225);
-*/
 
-
-/*
 INSERT INTO BOOKING (EventMonth, EventDay, EventYear, ClientID, TourName, Payment, DateBooked) VALUES
 ('Jan', 9, 2016, 1, 'North', 200, '2015-12-10'),
 ('Jan', 9, 2016, 2, 'North', 200, '2015-12-16'),
@@ -122,3 +112,40 @@ INSERT INTO BOOKING (EventMonth, EventDay, EventYear, ClientID, TourName, Paymen
 ('Jan', 29, 2016, 3, 'West', 200, '2015-12-18');
 
 */
+
+/* ------------------------------------------ Task 4
+*/
+
+/* Query 1
+SELECT c.GivenName, c.SurName, t.TourName, t.Description, e.EventYear, e.EventMonth, e.EventDay, e.EventFee, b.DateBooked, b.Payment
+FROM Client c
+INNER JOIN Booking b
+ON c.ClientId = b.ClientId
+
+INNER JOIN Event e
+ON e.EventMonth = b.EventMonth
+
+INNER JOIN Tour t
+ON t.TourName = b.TourName
+*/
+
+/* Query 2
+
+SELECT b.EventMonth, b.TourName, Count(*) "Num Bookings"
+FROM Booking b
+GROUP BY b.EventMonth, b.TourName
+Order By EventMonth DESC
+
+*/
+
+/* Query 3
+
+Select ClientID, TourName, Payment
+FROM BOOKING
+WHERE Payment > (Select AVG (Payment) FROM BOOKING)
+
+*/
+
+
+
+
