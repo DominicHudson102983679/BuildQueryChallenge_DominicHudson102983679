@@ -163,5 +163,67 @@ ON t.TourName = b.TourName
 
 */
 
+/* --------------------------------------------------- Task 6 
+ 
+Select *
+FROM Task5
+
+The query above produces 31 rows with details of first and last name, 
+Tour name and description 
+Event year, month, day 
+Event fee, datebooked and payment 
+
+Select Count(*) 
+FROM Task5 
+
+This query displays a single row displaying a value of 31. This proves that all the rows 
+with the mentioned columns are being collected and counted 
+
+--------------------
+
+Select *
+FROM Tour
+
+Select Count(*) 
+FROM Tour
+
+This query displays all 3 tour names and their matching description. Count (*) produces
+a value of 3 (the number of tours available)
+
+-------------------
+
+Select *
+FROM Client
+WHERE ClientId <=3
+
+Select * shows the 3 clients input from the excel spreadsheet plus 
+myself. Resulting in 4 rows with values. Adding the WHERE ClientId <=3 excludes
+me from the selection and only shows the original 3 clients because my student number
+does not meet the conditions of the WHERE clause
+
+---------------
+
+Select *
+FROM Event
+WHERE EventFee = 225
+
+This query only asks for the events with a fee of 225. This should only
+return the North tour on Feb 13 2016 and the West tour Jan 29 2016
+because the other 3 tours have an EventFee of 200 
+
+--------------------
 
 
+Select *
+FROM Booking b
+INNER JOIN TOUR t
+ON b.TourName = t.Tourname
+WHERE DateBooked = '2015-12-10'
+
+This query only calls for tours that were booked on 2015-12-10. Looking at the excel sheet
+This should only return 2 bookings by Taylor Price. And this query only returns 2 bookings. These are the
+North and South tours and both are held on Jan 9 2016. Ellyse Gamble has also booked for the North
+tour on Jan 9 2016 but was not displayed in the results because she did not book on 2015-12-10
+like the WHERE clause called for, proving this query works
+
+*/
