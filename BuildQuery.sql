@@ -146,6 +146,22 @@ WHERE Payment > (Select AVG (Payment) FROM BOOKING)
 
 */
 
+/* ------------------------------------------ Task 4
+
+CREATE VIEW TASK5 AS
+
+SELECT c.GivenName, c.SurName, t.TourName, t.Description, e.EventYear, e.EventMonth, e.EventDay, e.EventFee, b.DateBooked, b.Payment
+FROM Client c
+INNER JOIN Booking b
+ON c.ClientId = b.ClientId
+
+INNER JOIN Event e
+ON e.EventMonth = b.EventMonth
+
+INNER JOIN Tour t
+ON t.TourName = b.TourName
+
+*/
 
 
 
